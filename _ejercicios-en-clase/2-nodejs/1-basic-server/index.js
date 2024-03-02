@@ -10,11 +10,21 @@ const server = http.createServer(
         res.end("Mi servidor NodeJS");
     }
 */
-    async (req, res) => {
+    (req, res) => {
         res.writeHead(200, 
             {"Content-Type": "application/json"}
         );
-        res.end("Mi servidor NodeJS");
+        
+        //Traer datos de algun lado (BD, archivo, API, etc.)
+        fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(response => {
+            console.log("1.Se tuvo respuesta del server")
+            return response.json()
+        })
+        .then(json => {
+            console.log("2.Se obtuvo el json")
+            res.end(JSON.stringify(json))
+        });
     }
 
 );
