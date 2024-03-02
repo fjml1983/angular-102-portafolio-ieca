@@ -1,0 +1,91 @@
+/*
+Async/await, simplificando la ejecución de promises.
+aunque no simplificando, sino adaptando al paradigma procedural.
+
+*/
+
+var diasTranscurridos = 0
+
+function despertar() {
+  return new Promise(
+    (resolve, reject) => {
+       const hora = new Date();
+       console.log("Despertando", hora.toLocaleString());      
+      
+       if(diasTranscurridos >= 3){
+         //Descanso cada tercer día
+         reject("Descanso de media semana!!");
+       }
+      
+       setTimeout(
+         ()=>{
+            resolve(true)
+         },
+         3000
+       );
+    }
+  );
+}
+
+function comer() {
+  return new Promise(
+    (resolve, reject) => {
+       const hora = new Date();
+       console.log("Comiendo", hora.toLocaleString());      
+       setTimeout(
+         ()=>{
+            resolve(true)
+         },
+         3000
+       );
+    }
+  );
+}
+
+function trabajar() {
+  return new Promise(
+    (resolve, reject) => {
+       const hora = new Date();
+       console.log("Trabajando", hora.toLocaleString());      
+       setTimeout(
+         ()=>{
+            resolve(true)
+         },
+         3000
+       );
+    }
+  );
+}
+
+function dormir() {
+  return new Promise(
+    (resolve, reject) => {
+       const hora = new Date();
+       console.log("Durmiendo", hora.toLocaleString());      
+       setTimeout(
+         ()=>{
+            resolve(true)
+         },
+         3000
+       );
+    }
+  );
+}
+
+async function inicio(){
+  diasTranscurridos +=1;
+  console.log(`Dia ${diasTranscurridos}`);
+  try{
+    await despertar();
+    await trabajar();    
+    await comer();
+    await dormir();    
+    inicio();
+  }catch(res){
+    console.log(res);
+  }
+  
+  
+}
+
+inicio();
