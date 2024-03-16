@@ -2,26 +2,30 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DailiesComponent } from './pages/dailies/dailies.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
+import { PlaygroundComponent } from './pages/playground/playground.component';
 
 const routes: Routes = [
   {
-    path:'', //Ruta inicial raiz
+    path: '',
     redirectTo: '/dailies',
-    pathMatch: 'full'
+    pathMatch: "full"
   },
   {
-    path:'dailies', //Ruta inicial raiz
+    path: 'dailies',
     component: DailiesComponent
   },
   {
-    path:'tasks', //Ruta inicial raiz
+    path: 'tasks',
     component: TasksComponent
   },
   {
-    path:'**', //Para cuando escriban cualquier ruta inexistente
-    redirectTo: '/', //Redirigir a raiz
+    path: 'playground',
+    component: PlaygroundComponent
   },
-
+  {
+    path: '**',
+    redirectTo: '/dailies'
+  }
 ];
 
 @NgModule({

@@ -1,5 +1,15 @@
-<hr/>
-<p>This is an info-daily-card</p>
-<p>{{ daily.id}}</p>
-<p>{{ daily.note}}</p>
-<hr/>
+<div class="daily-card" [style.backgroundColor]="daily.color">
+    <div class="header">
+        <span>
+            {{ daily.emotion }}
+        </span>
+        <span>
+            {{ daily.timestamp | date: 'dd/MM/yyyy' }}
+        </span>
+    </div>
+    <div class="resume">
+        <pre>
+            {{ daily.note }}
+        </pre>
+    </div>
+</div>
