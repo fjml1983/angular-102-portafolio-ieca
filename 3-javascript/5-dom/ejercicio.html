@@ -7,7 +7,7 @@
 <body>
     <div style="display: flex">
         <input type="text" id="inputEncabezado" placeholder="Ingresa el nuevo encabezado"
-        style="width:70%;margin-bottom:10px" />
+            style="width:70%;margin-bottom:10px" />
     </div>
     <div style="display: flex">
         <button id="btnActualizacion" onClick="modificarEncabezado()" style="margin-right: 10px">Establecer Encabezado</button>
@@ -17,7 +17,7 @@
 
     <script>
 
-        /*
+/*
         INSTRUCCIONES:
         
         1.  Codifica la función modificarEncabezado del botón "btnActualizacion" 
@@ -34,13 +34,57 @@
                     así podrás saber cuando desbloquear el botón
         */
 
-        const btnUndo = document.getElementById('btnUndo')
-        const tituloEncabezado = document.getElementById('encabezado')
-        const inputEncabezado = document.getElementById('inputEncabezado')
+        // Variables globales para referenciar los elementos HTML
+        const btnUndo = document.getElementById('btnUndo');
+        const tituloEncabezado = document.getElementById('encabezado');
+        const inputEncabezado = document.getElementById('inputEncabezado');
+        
+        // Variable para contar el número de títulos establecidos
+        let contadorTitulos = 0;
+        
+        // Variable para almacenar el último título establecido
+        let ultimoTitulo = '';
 
+        // Función para modificar el encabezado
         function modificarEncabezado() {
             /* Tu código aquí */
+            // Obtiene el nuevo título del input y lo limpia eliminando espacios en blanco
+            const nuevoTitulo = inputEncabezado.value.trim();
+            
+            // Verifica si el nuevo título está vacío
+            if (nuevoTitulo === '') {
+                alert('El valor del encabezado no puede ser vacío.');
+                return;
+            }
+            
+            // Almacena el último título establecido
+            ultimoTitulo = tituloEncabezado.textContent;
+            
+            // Establece el nuevo título en el encabezado <h1>
+            tituloEncabezado.textContent = nuevoTitulo;
+            
+            // Incrementa el contador de títulos
+            contadorTitulos++;
+            
+            // Habilita el botón "Encabezado Anterior" si se han establecido al menos dos títulos
+            if (contadorTitulos >= 2) {
+                btnUndo.disabled = false;
+            }
         }
+
+        // Agrega un evento 'click' al botón "Encabezado Anterior"
+        btnUndo.addEventListener('click', function() {
+            // Restaura el último título establecido
+            tituloEncabezado.textContent = ultimoTitulo;
+            
+            // Decrementa el contador de títulos
+            contadorTitulos--;
+            
+            // Deshabilita el botón "Encabezado Anterior" si el número de títulos es menor a dos
+            if (contadorTitulos < 2) {
+                btnUndo.disabled = true;
+            }
+        });
     </script>
 </body>
 

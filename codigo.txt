@@ -1,1 +1,5 @@
-ASJDJDJD
+
+IMPORTANTE:
+
+Todo el código desarrollado en los ejercicios guiados en clase se encuentra
+en la carpeta: _ejercicios-en-clase
