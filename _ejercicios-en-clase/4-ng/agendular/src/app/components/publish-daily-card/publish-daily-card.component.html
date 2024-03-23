@@ -6,7 +6,7 @@
                     [(ngModel)]="todayDaily.emotion"
                     [ngStyle]="
                         {
-                            'background-color': todayDaily.emotion.length > 0 ? 'transparent' : 'white', 
+                            'background-color': todayDaily.emotion.length > 0 ? 'transparent' : 'white',
                             'border': todayDaily.emotion.length > 0 && 0
                         }
                     "
@@ -21,8 +21,8 @@
                 </select>
             </div>
             <div class="date">
-                {{ todayDaily.timestamp | date: 'short'  }}
-                <input 
+                {{ clockNow | date: 'short'  }}
+                <input
                     [(ngModel)]="todayDaily.color"
                     (ngModelChange)="todayDaily.getDarkerColor()"
                     type="color"
@@ -41,13 +41,16 @@
             >
             </textarea>
         </div>
-        <div class="actions">
-            <span> {{ todayDaily.note.length }} </span>
+        <div>
+            <span [hidden]="!dailyForm.invalid" style="font-size:  12px;">Para guardar escribe 10 caracteres minimo y elige emoji.</span>
+        </div>
+        <div class="actions">            
+            <span> {{ todayDaily.note.length }} </span>            
             <button
                 [disabled]="dailyForm.invalid"
-            >
+            >            
                 💾
             </button>
         </div>
     </form>
-</div>
+ </div> 

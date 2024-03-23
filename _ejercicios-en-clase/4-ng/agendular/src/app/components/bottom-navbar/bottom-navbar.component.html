@@ -1,0 +1,12 @@
+<nav>
+    <div class="links">
+        <a routerLink="dailies" routerLinkActive="active">📖</a>
+        <a routerLink="tasks"  routerLinkActive="active">🙉</a>
+        <a routerLink="playground"  routerLinkActive="active">🏖️</a>
+    </div>
+    <div class="clock">        
+         <!-- date: 'HH:mm:ss' -->
+       <span>🕰️ {{ clockNow | date: 'HH:mm:ss' }}</span>
+    </div>
+
+</nav>
